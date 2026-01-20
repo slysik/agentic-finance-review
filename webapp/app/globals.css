@@ -1,0 +1,319 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --background: #f5f7fa;
+  --foreground: #1f2937;
+}
+
+body {
+  color: var(--foreground);
+  background: var(--background);
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+}
+
+/* Custom scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: #f1f1f1;
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #c1c1c1;
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #a1a1a1;
+}
+
+/* Animations */
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(10px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.animate-fade-in {
+  animation: fadeIn 0.3s ease-out;
+}
+
+@keyframes pulse-slow {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.7; }
+}
+
+.animate-pulse-slow {
+  animation: pulse-slow 2s ease-in-out infinite;
+}
+
+/* Upload area */
+.upload-zone {
+  @apply border-2 border-dashed border-gray-300 rounded-2xl p-12 text-center cursor-pointer transition-all duration-200;
+}
+
+.upload-zone:hover {
+  @apply border-blue-400 bg-blue-50;
+}
+
+.upload-zone.drag-over {
+  @apply border-blue-500 bg-blue-100;
+}
+
+/* Cards */
+.card {
+  @apply bg-white rounded-2xl shadow-lg p-6;
+}
+
+.card-hover {
+  @apply transition-transform duration-200 hover:scale-[1.02] hover:shadow-xl;
+}
+
+/* Metric cards */
+.metric-card {
+  @apply card text-center;
+}
+
+.metric-value {
+  @apply text-4xl font-bold mb-2;
+}
+
+.metric-value.positive {
+  @apply text-green-500;
+}
+
+.metric-value.negative {
+  @apply text-red-500;
+}
+
+.metric-value.neutral {
+  @apply text-blue-500;
+}
+
+.metric-label {
+  @apply text-sm text-gray-500 uppercase tracking-wide;
+}
+
+/* Buttons */
+.btn {
+  @apply px-6 py-3 rounded-xl font-semibold transition-all duration-200 cursor-pointer;
+}
+
+.btn-primary {
+  @apply btn bg-blue-600 text-white hover:bg-blue-700 active:bg-blue-800;
+}
+
+.btn-secondary {
+  @apply btn bg-gray-200 text-gray-800 hover:bg-gray-300 active:bg-gray-400;
+}
+
+.btn-success {
+  @apply btn bg-green-600 text-white hover:bg-green-700 active:bg-green-800;
+}
+
+/* Progress bar */
+.progress-bar {
+  @apply h-2 bg-gray-200 rounded-full overflow-hidden;
+}
+
+.progress-fill {
+  @apply h-full bg-blue-600 transition-all duration-300;
+}
+
+/* Tables */
+.table-container {
+  @apply overflow-x-auto;
+}
+
+.data-table {
+  @apply w-full text-sm;
+}
+
+.data-table th {
+  @apply text-left p-3 bg-gray-50 font-semibold text-gray-600 uppercase tracking-wide text-xs;
+}
+
+.data-table td {
+  @apply p-3 border-b border-gray-100;
+}
+
+.data-table tr:hover td {
+  @apply bg-gray-50;
+}
+
+/* Fintech Design System - from generative-ui.md */
+
+/* Premium Metric Cards */
+.metric-card-premium {
+  @apply bg-white rounded-3xl p-6 relative overflow-hidden;
+  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+}
+
+.metric-card-premium::before {
+  content: '';
+  @apply absolute top-0 right-0 w-32 h-32 rounded-full opacity-10;
+  transform: translate(30%, -30%);
+}
+
+.metric-card-premium.income::before {
+  @apply bg-emerald-500;
+}
+
+.metric-card-premium.expense::before {
+  @apply bg-red-500;
+}
+
+/* Large Numbers */
+.metric-large {
+  font-size: 3rem;
+  font-weight: 700;
+  line-height: 1;
+  letter-spacing: -0.02em;
+}
+
+/* Time Range Selectors */
+.time-range-selector {
+  @apply inline-flex gap-1 p-1 bg-gray-100 rounded-xl;
+}
+
+.time-range-btn {
+  @apply px-4 py-2 rounded-lg text-sm font-medium text-gray-600 transition-all duration-200;
+}
+
+.time-range-btn:hover {
+  @apply bg-white/50;
+}
+
+.time-range-btn.active {
+  @apply bg-white text-gray-900 shadow-sm;
+}
+
+/* Category Pills */
+.category-pill {
+  @apply inline-flex items-center gap-2 px-3 py-1.5 rounded-full text-sm font-medium;
+}
+
+.category-dot {
+  @apply w-2 h-2 rounded-full;
+}
+
+/* Trend Indicators */
+.trend-up {
+  @apply inline-flex items-center gap-1 text-emerald-600 text-sm font-medium;
+}
+
+.trend-down {
+  @apply inline-flex items-center gap-1 text-red-500 text-sm font-medium;
+}
+
+.trend-neutral {
+  @apply inline-flex items-center gap-1 text-gray-500 text-sm font-medium;
+}
+
+/* Progress Indicators */
+.progress-ring {
+  @apply relative inline-flex items-center justify-center;
+}
+
+.progress-ring-bg {
+  @apply text-gray-200;
+}
+
+.progress-ring-fill {
+  @apply text-emerald-500;
+  transform: rotate(-90deg);
+  transform-origin: center;
+}
+
+/* Horizontal Progress */
+.progress-bar-rounded {
+  @apply h-3 bg-gray-100 rounded-full overflow-hidden;
+}
+
+.progress-bar-fill-rounded {
+  @apply h-full rounded-full transition-all duration-500;
+}
+
+/* Card Shadows (no borders) */
+.shadow-card {
+  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+}
+
+.shadow-card-hover:hover {
+  box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+}
+
+/* Bento Grid */
+.bento-grid {
+  display: grid;
+  gap: 1.5rem;
+}
+
+.bento-item {
+  @apply bg-white rounded-3xl p-6;
+  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+}
+
+/* Treemap Styles */
+.treemap {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 4px;
+  min-height: 200px;
+}
+
+.treemap-item {
+  min-width: 100px;
+  min-height: 80px;
+  padding: 12px;
+  border-radius: 12px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  color: white;
+  font-weight: 500;
+}
+
+.treemap-item .category {
+  font-size: 0.875rem;
+  opacity: 0.9;
+}
+
+.treemap-item .amount {
+  font-size: 1.125rem;
+  font-weight: 700;
+}
+
+/* Accent Colors from Design System */
+.accent-emerald { color: #10B981; }
+.accent-coral { color: #EF4444; }
+.accent-purple { color: #8B5CF6; }
+.accent-blue { color: #3B82F6; }
+.accent-amber { color: #F59E0B; }
+
+.bg-accent-emerald { background-color: #10B981; }
+.bg-accent-coral { background-color: #EF4444; }
+.bg-accent-purple { background-color: #8B5CF6; }
+.bg-accent-blue { background-color: #3B82F6; }
+.bg-accent-amber { background-color: #F59E0B; }
+
+/* Subtle Gray Text */
+.text-subtle {
+  color: #6B7280;
+}
+
+/* Responsive Grid Helpers */
+@media (min-width: 768px) {
+  .bento-grid-2 {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .bento-grid-4 {
+    grid-template-columns: repeat(4, 1fr);
+  }
+}
